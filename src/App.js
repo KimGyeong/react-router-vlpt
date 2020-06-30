@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from "./Home";
+import {Link, Route} from "react-router-dom";
+import About from "./About";
+import Profile from "./Profile";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // /about 경로가 / 규칙과 일치하기에 exact라는 property를 true로 설정하면 됨.
+    return (
+        <div>
+            <ul>
+                <li>
+                    <Link to="/">홈</Link>
+                </li>
+                <li>
+                    <Link to="/about">소개</Link>
+                </li>
+            </ul>
+            <hr />
+            <Route path="/" exact={true} component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/profiles/:username" component={Profile} />
+        </div>
+    );
 }
 
 export default App;
